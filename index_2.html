@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>بيت للبيع — الحضرمي الكبيرة</title>
+<style>
+  :root{
+    --ink:#20302c;
+    --ink-soft:#3c4d47;
+    --cream:#f5efe1;
+    --cream-2:#efe6d2;
+    --white:#fffdf8;
+    --brass:#b3893f;
+    --brass-light:#d6b877;
+    --brick:#9c4a34;
+    --line:#d9caa8;
+    --green-done:#5c7a5e;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background: var(--cream);
+    font-family:'Tahoma','Segoe UI',Arial,sans-serif;
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+  }
+  .page{
+    max-width:640px;
+    margin:0 auto;
+    background:var(--white);
+    min-height:100vh;
+    box-shadow:0 0 60px rgba(32,48,44,0.08);
+    position:relative;
+    overflow:hidden;
+  }
+
+  /* ===== HERO ===== */
+  .hero{
+    background: linear-gradient(175deg, var(--ink) 0%, #16211e 100%);
+    color:var(--cream);
+    padding:36px 28px 90px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+      repeating-linear-gradient(135deg, rgba(211,184,119,0.05) 0 2px, transparent 2px 22px);
+    pointer-events:none;
+  }
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:'Tahoma','Segoe UI',Arial,sans-serif; font-weight:800;
+    font-weight:700;
+    font-size:13px;
+    letter-spacing:0.5px;
+    color:var(--brass-light);
+    border:1px solid rgba(214,184,119,0.4);
+    padding:6px 14px;
+    border-radius:100px;
+    background:rgba(214,184,119,0.08);
+  }
+  .eyebrow::before{
+    content:"";
+    width:6px; height:6px;
+    background:var(--brass-light);
+    border-radius:50%;
+  }
+  h1.title{
+    font-family:'Tahoma','Segoe UI',Arial,sans-serif; font-weight:800;
+    font-weight:900;
+    font-size:34px;
+    line-height:1.35;
+    margin-top:18px;
+    color:var(--white);
+  }
+  h1.title span{ color:var(--brass-light); }
+  .location-line{
+    margin-top:14px;
+    font-size:15.5px;
+    line-height:1.9;
+    color:#cdd8d2;
+    max-width:480px;
+  }
+  .location-line b{ color:var(--brass-light); font-weight:800; }
+
+  .stat-strip{
+    display:flex;
+    gap:10px;
+    margin-top:26px;
+    flex-wrap:wrap;
+  }
+  .stat-pill{
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.12);
+    border-radius:14px;
+    padding:10px 16px;
+    text-align:center;
+    flex:1;
+    min-width:90px;
+  }
+  .stat-pill .num{
+    font-family:'Tahoma','Segoe UI',Arial,sans-serif; font-weight:800;
+    font-weight:900;
+    font-size:22px;
+    color:var(--brass-light);
+    display:block;
+  }
+  .stat-pill .lbl{
+    font-size:12px;
+    color:#b7c2bc;
+    margin-top:2px;
+  }
+
+  /* ===== BUILDING SIGNATURE ===== */
+  .building-wrap{
+    margin:-58px 22px 0;
+    background:var(--white);
+    border-radius:22px;
+    box-shadow:0 18px 40px rgba(32,48,44,0.15);
+    padding:22px 20px 8px;
+    position:relative;
+    z-index:2;
+  }
+  .building-title{
+    font-family:'Tahoma','Segoe UI',Arial,sans-serif; font-weight:800;
+    font-weight:800;
+    font-size:15px;
+    color:var(--ink);
+    margin-bottom:14px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .building-title .tag-done{
+    font-family:'Tahoma','Segoe UI',Arial,sans-serif;
+    font-size:11px;
+    font-weight:700;
+    color:var(--green-done);
+    background:rgba(92,122,94,0.12);
+    padding:4px 10px;
+    border-radius:100px;
+  }
+  .floor{
+    display:flex;
+    align-items:stretch;
+    gap:0;
+    border-bottom:1px dashed var(--line);
+  }
+  .floor:last-child{ border-bottom:none; }
+  .floor-index{
+    width:44px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Tahoma','Segoe UI',Arial,sans-serif; font-weight:800;
+    font-weight:900;
+    font-size:16px;
+    color:var(--brass);
+    position:relative;
+  }
+  .floor-index::after{
+    content:"";
+    position:absolute;
+    right:21px;
+    top:0; bottom:0;
+    width:1px;
+    background:var(--line);
+    z-index:0;
+  }
+  .floor.done .floor-index{ color:var(--green-done); }
+  .floor-body{
+    flex:1;
+    padding:14px 6px 14px 4px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+  }
+  .floor-name{
+    font-weight:800;
+    font-size:14.5px;
+    color:var(--ink);
+  }
+  .floor-desc{
+    font-size:12.5px;
+    color:var(--ink-soft);
+    margin-top:2px;
+  }
+  .floor-status{
+    font-size:11px;
+    font-weight:700;
+    padding:5px 10px;
+    border-radius:100px;
+    white-space:nowrap;
+    background:rgba(156,74,52,0.1);
+    color:var(--brick);
+  }
+  .floor.done .floor-status{
+    background:rgba(92,122,94,0.14);
+    color:var(--green-done);
+  }
+
+  /* ===== DETAILS ===== */
+  .section{
+    padding:30px 24px 6px;
+  }
+  .section-title{
+    font-family:'Tahoma','Segoe UI',Arial,sans-serif; font-weight:800;
+    font-weight:800;
+    font-size:17px;
+    color:var(--ink);
+    margin-bottom:16px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .section-title::before{
+    content:"";
+    width:4px; height:18px;
+    background:var(--brass);
+    border-radius:3px;
+  }
+
+  .detail-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-bottom:8px;
+  }
+  .detail-card{
+    background:var(--cream);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:14px 16px;
+  }
+  .detail-card .k{
+    font-size:12px;
+    color:var(--ink-soft);
+    font-weight:700;
+  }
+  .detail-card .v{
+    font-family:'Tahoma','Segoe UI',Arial,sans-serif; font-weight:800;
+    font-weight:800;
+    font-size:16px;
+    color:var(--ink);
+    margin-top:4px;
+  }
+  .detail-card.full{ grid-column:1 / -1; }
+
+  .compass{
+    display:flex;
+    gap:8px;
+    margin-top:6px;
+    flex-wrap:wrap;
+  }
+  .compass span{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:100px;
+    padding:5px 12px;
+    font-size:12.5px;
+    font-weight:700;
+    color:var(--ink);
+  }
+
+  .apt-list{
+    list-style:none;
+    margin-top:8px;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  .apt-list li{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:14px;
+    color:var(--ink);
+    font-weight:700;
+  }
+  .apt-list li::before{
+    content:"";
+    width:8px; height:8px;
+    border-radius:2px;
+    background:var(--brass);
+    flex-shrink:0;
+  }
+
+  /* ===== CONTACT ===== */
+  .contact-section{
+    padding:34px 24px 26px;
+    background: linear-gradient(180deg, var(--white), var(--cream-2));
+    margin-top:10px;
+  }
+  .call-btn{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    background:var(--ink);
+    color:var(--white);
+    text-decoration:none;
+    padding:16px 20px;
+    border-radius:16px;
+    margin-bottom:12px;
+    transition:transform .15s ease, box-shadow .15s ease;
+    box-shadow:0 8px 20px rgba(32,48,44,0.18);
+  }
+  .call-btn:active{ transform:scale(0.98); }
+  .call-btn .left{
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+  .call-icon{
+    width:38px; height:38px;
+    border-radius:50%;
+    background:var(--brass);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+  }
+  .call-icon svg{ width:18px; height:18px; }
+  .call-text .lbl{
+    font-size:11.5px;
+    color:#c9d3cd;
+  }
+  .call-text .num{
+    font-family:'Tahoma','Segoe UI',Arial,sans-serif; font-weight:800;
+    font-weight:800;
+    font-size:17px;
+    direction:ltr;
+    display:inline-block;
+  }
+  .call-arrow{
+    font-size:20px;
+    color:var(--brass-light);
+  }
+
+  /* ===== QR ===== */
+  .qr-card{
+    margin-top:22px;
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:20px;
+    padding:22px;
+    display:flex;
+    align-items:center;
+    gap:18px;
+  }
+  #qrcode{
+    background:var(--white);
+    padding:8px;
+    border-radius:12px;
+    border:1px solid var(--line);
+    flex-shrink:0;
+  }
+  #qrcode img{ display:block; border-radius:6px; }
+  .qr-text .qr-title{
+    font-family:'Tahoma','Segoe UI',Arial,sans-serif; font-weight:800;
+    font-weight:800;
+    font-size:15px;
+    color:var(--ink);
+  }
+  .qr-text .qr-desc{
+    font-size:12.5px;
+    color:var(--ink-soft);
+    margin-top:6px;
+    line-height:1.7;
+  }
+
+  footer{
+    text-align:center;
+    padding:22px 20px 30px;
+    font-size:11.5px;
+    color:#9aa39d;
+  }
+
+  @media (max-width:380px){
+    h1.title{ font-size:28px; }
+    .detail-grid{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="hero">
+    <span class="eyebrow">فرصة للبيع</span>
+    <h1 class="title">roaa<br><span>في الحضرمي الكبيرة</span></h1>
+    <p class="location-line">
+      <b>الموقع:</b> بجوار ورشة أبو الشعور — الطريق الرئيسي، ديرب وإبراهيمية.
+    </p>
+    <div class="stat-strip">
+      <div class="stat-pill"><span class="num">4</span><span class="lbl">أدوار</span></div>
+      <div class="stat-pill"><span class="num">قيراط</span><span class="lbl">المساحة</span></div>
+      <div class="stat-pill"><span class="num">3</span><span class="lbl">بلكونات</span></div>
+      <div class="stat-pill"><span class="num">5</span><span class="lbl">غرف بالشقة</span></div>
+    </div>
+  </div>
+
+  <div class="building-wrap">
+    <div class="building-title">
+      مخطط الأدوار
+      <span class="tag-done">الأخضر = متشطب</span>
+    </div>
+
+    <div class="floor done">
+      <div class="floor-index">1</div>
+      <div class="floor-body">
+        <div>
+          <div class="floor-name">الدور الأرضي</div>
+          <div class="floor-desc">محلات تجارية</div>
+        </div>
+        <div class="floor-status">متشطب</div>
+      </div>
+    </div>
+
+    <div class="floor done">
+      <div class="floor-index">2</div>
+      <div class="floor-body">
+        <div>
+          <div class="floor-name">الدور الأول العلوي</div>
+          <div class="floor-desc">شقة 5 غرف + صالة واسعة + مطبخ + حمام</div>
+        </div>
+        <div class="floor-status">متشطب</div>
+      </div>
+    </div>
+
+    <div class="floor">
+      <div class="floor-index">3</div>
+      <div class="floor-body">
+        <div>
+          <div class="floor-name">الدور الثاني العلوي</div>
+        </div>
+        <div class="floor-status">على الطوب الأحمر</div>
+      </div>
+    </div>
+
+    <div class="floor">
+      <div class="floor-index">4</div>
+      <div class="floor-body">
+        <div>
+          <div class="floor-name">الدور الثالث العلوي</div>
+        </div>
+        <div class="floor-status">على الطوب الأحمر</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">تفاصيل العقار</div>
+    <div class="detail-grid">
+      <div class="detail-card">
+        <div class="k">المساحة</div>
+        <div class="v">قيراط واحد</div>
+      </div>
+      <div class="detail-card">
+        <div class="k">عدد الأدوار</div>
+        <div class="v">4 أدوار</div>
+      </div>
+      <div class="detail-card full">
+        <div class="k">الأدوار المتشطبة</div>
+        <div class="v">الأرضي (محلات) + الأول العلوي</div>
+      </div>
+      <div class="detail-card full">
+        <div class="k">فتحات العقار</div>
+        <div class="compass">
+          <span>بحري</span>
+          <span>قبلي</span>
+          <span>غربي</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">شقة الدور الأول العلوي</div>
+    <div class="detail-card full">
+      <ul class="apt-list">
+        <li>5 غرف</li>
+        <li>صالة واسعة</li>
+        <li>مطبخ</li>
+        <li>حمام</li>
+        <li>3 بلكونات (بحري - قبلي - غربي)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="contact-section">
+    <div class="section-title" style="margin-bottom:16px;">للتواصل والاستفسار</div>
+
+    <a class="call-btn" href="tel:01099492491">
+      <div class="left">
+        <div class="call-icon">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="#20302c"/></svg>
+        </div>
+        <div class="call-text">
+          <div class="lbl">اتصل الآن</div>
+          <div class="num">01099492491</div>
+        </div>
+      </div>
+      <div class="call-arrow">‹</div>
+    </a>
+
+    <a class="call-btn" href="tel:01142663185">
+      <div class="left">
+        <div class="call-icon">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="#20302c"/></svg>
+        </div>
+        <div class="call-text">
+          <div class="lbl">اتصل الآن</div>
+          <div class="num">01142663185</div>
+        </div>
+      </div>
+      <div class="call-arrow">‹</div>
+    </a>
+
+  </div>
+
+  <footer>صفحة عرض عقار — للتواصل استخدم الأرقام أعلاه</footer>
+</div>
+</body>
+</html>
